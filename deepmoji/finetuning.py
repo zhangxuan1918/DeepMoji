@@ -161,7 +161,10 @@ def change_trainable(layer, trainable, verbose=False):
 
     if type(layer) == Bidirectional:
         layer.backward_layer.trainable = trainable
+        layer.backward_layer.cell.trainable = trainable
         layer.forward_layer.trainable = trainable
+        layer.forward_layer.cell.trainable = trainable
+        layer.layer.trainable = trainable
 
     if type(layer) == TimeDistributed:
         layer.backward_layer.trainable = trainable
